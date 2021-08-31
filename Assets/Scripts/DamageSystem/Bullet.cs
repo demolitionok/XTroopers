@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour, IDamageDealer
     {
         return new Damage
         {
-            DmgValue = 2
+            DmgValue = dmgValue
         };
     }
     
