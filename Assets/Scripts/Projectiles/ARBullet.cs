@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour, IDamageDealer
+//Automatic Riffle Bullet
+public class ARBullet : MonoBehaviour, IDamageDealer
 {
     [SerializeField]
     private float dmgValue;
-    
+
     public Damage DealDamage()
     {
         return new Damage
@@ -15,12 +16,14 @@ public class Bullet : MonoBehaviour, IDamageDealer
             DmgValue = dmgValue
         };
     }
-    
-    public void OnCollisionEnter(Collision other)
+
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.TryGetComponent(out IDamageReceiver damageReceiver))
+        var collisionGameObject = other.gameObject;
+        if (collisionGameObject.TryGetComponent(out IDamageReceiver damageReceiver))
         {
             DamageService.TransferDamage(damageReceiver, this);
         }
+        Destroy(gameObject);
     }
 }
