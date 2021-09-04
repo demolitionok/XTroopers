@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class AbstractUnit : MonoBehaviour
 {
+    [SerializeField]
     private float _hp;
     public event Action OnDeath;
     
@@ -14,6 +15,7 @@ public abstract class AbstractUnit : MonoBehaviour
         if (value <= 0)
         {
             OnDeath?.Invoke();
+            Destroy(gameObject);
             _hp = 0;
         }
     }
