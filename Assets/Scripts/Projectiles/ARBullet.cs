@@ -9,6 +9,8 @@ public class ARBullet : MonoBehaviour, IDamageDealer
     [SerializeField]
     private float dmgValue;
 
+    public int allyLayer;
+
     public Damage DealDamage()
     {
         return new Damage
