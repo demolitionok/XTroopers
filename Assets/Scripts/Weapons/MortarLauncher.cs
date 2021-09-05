@@ -5,7 +5,7 @@ public class MortarLauncher : MonoBehaviour , IWeapon
 {
     [SerializeField] private float angleInDegrees = 45f;
     [SerializeField] private Transform mortarShootingPoint;
-    [SerializeField] private Rigidbody bulletPrefab;
+    [SerializeField] private Rigidbody bulletPrefab; 
     private float g = Physics.gravity.y;
     
 

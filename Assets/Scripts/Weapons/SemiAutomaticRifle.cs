@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class SemiAutomaticRifle : MonoBehaviour,IWeapon
 {
+
     [SerializeField] private Transform attackPoint;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float speed;
     
     public int allyLayer;
-    
+
     public void OpenFire(Transform target)
     {
         GameObject bullet =

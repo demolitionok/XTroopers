@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MissleLauncher : MonoBehaviour ,IWeapon
+public class MissleLauncher : MonoBehaviour, IWeapon
 {
     [SerializeField] private GameObject rocket;
     [SerializeField] private Transform rocketPosition;
