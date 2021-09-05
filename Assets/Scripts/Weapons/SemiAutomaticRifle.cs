@@ -21,7 +21,7 @@ public class SemiAutomaticRifle : MonoBehaviour,IWeapon
     {
         GameObject bullet =
             Instantiate(projectilePrefab, attackPoint.position,
-                Quaternion.identity);
+                Quaternion.Euler(90f, 0, 0));
         bullet.GetComponent<ARBullet>().InitBullet(_damageDealer, _allyLayer);
         bullet.GetComponent<Rigidbody>().velocity = attackPoint.forward * speed;
         Destroy(bullet, 3f);
