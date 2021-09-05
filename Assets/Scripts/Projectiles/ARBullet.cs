@@ -7,9 +7,13 @@ using UnityEngine;
 public class ARBullet : MonoBehaviour
 {
     private IDamageDealer _damageDealer;
-    
-    public int allyLayer;
+    private int _allyLayer;
 
+    public void InitBullet(IDamageDealer damageDealer, int allyLayer)
+    {
+        _damageDealer = damageDealer;
+        _allyLayer = allyLayer;
+    }
 
     private void OnCollisionEnter(Collision other)
     {

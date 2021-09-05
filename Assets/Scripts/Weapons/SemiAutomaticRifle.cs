@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 
+[RequireComponent(typeof(IDamageDealer))]
 public class SemiAutomaticRifle : MonoBehaviour,IWeapon
 {
 
@@ -7,14 +9,20 @@ public class SemiAutomaticRifle : MonoBehaviour,IWeapon
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float speed;
     
-    public int allyLayer;
+    private IDamageDealer _damageDealer;
+    private int _allyLayer;
+    
+    private void Awake()
+    {
+        _damageDealer = GetComponent<IDamageDealer>();
+    }
 
     public void OpenFire(Transform target)
     {
         GameObject bullet =
             Instantiate(projectilePrefab, attackPoint.position,
                 Quaternion.identity);
-        bullet.GetComponent<ARBullet>().allyLayer = allyLayer;
+        bullet.GetComponent<ARBullet>().InitBullet(_damageDealer, _allyLayer);
         bullet.GetComponent<Rigidbody>().velocity = attackPoint.forward * speed;
         Destroy(bullet, 3f);
     }
