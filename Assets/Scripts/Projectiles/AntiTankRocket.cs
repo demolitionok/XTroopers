@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class AntiTankRocket : MonoBehaviour
 {
-    [SerializeField] private GameObject explosion;
-    
+    [SerializeField] 
+    private GameObject explosion;
     private Transform _targetForRocket;
     private IDamageDealer _damageDealer;
     private bool _launcherIsActive;
@@ -26,7 +26,8 @@ public class AntiTankRocket : MonoBehaviour
         if (target != null)
         {
             transform.LookAt(target);
-            transform.position = Vector3.MoveTowards(transform.position, target.position, 0.5f);
+            var newPosition = Vector3.MoveTowards(transform.position, target.position, 0.01f);
+            transform.position = newPosition;
         }
         else
         {

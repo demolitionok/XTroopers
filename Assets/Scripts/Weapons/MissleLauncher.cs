@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(DamageDealer))]
 public class MissleLauncher : MonoBehaviour, IWeapon
 {
-    [SerializeField] private GameObject rocket;
+    [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform rocketPosition;
     private IDamageDealer _damageDealer;
         
@@ -15,7 +15,7 @@ public class MissleLauncher : MonoBehaviour, IWeapon
 
     public void OpenFire(Transform target)
     {
-        Instantiate(rocket, rocketPosition.position, Quaternion.identity);
+        GameObject rocket = Instantiate(projectilePrefab, rocketPosition.position, Quaternion.identity);
         AntiTankRocket activeRocket = rocket.GetComponent<AntiTankRocket>();
         activeRocket.InitBullet(_damageDealer, target, true);
     }
