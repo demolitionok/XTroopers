@@ -6,11 +6,13 @@ using UnityEngine;
 public abstract class AbstractUnit : MonoBehaviour
 {
     [SerializeField]
+    private float startHp;
+    
     private float _hp;
     public event Action OnDeath;
     public event Action<float> OnHpChanged;
 
-    protected void SetHp(float value)
+    public void SetHp(float value)
     {
         _hp = value;
         OnHpChanged?.Invoke(value);
@@ -27,6 +29,12 @@ public abstract class AbstractUnit : MonoBehaviour
     }
 
     public float GetHp() => _hp;
+
+    public void Awake()
+    {
+        OnHpChanged += CheckForDeath;
+        SetHp(startHp);
+    }
 
     private void OnEnable()
     {
