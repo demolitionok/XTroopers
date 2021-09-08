@@ -7,7 +7,7 @@ public abstract class AbstractUnit : MonoBehaviour
 {
     [SerializeField]
     private float startHp;
-    
+    [SerializeField]
     private float _hp;
     public event Action OnDeath;
     public event Action<float> OnHpChanged;
@@ -30,15 +30,10 @@ public abstract class AbstractUnit : MonoBehaviour
 
     public float GetHp() => _hp;
 
-    public void Awake()
-    {
-        OnHpChanged += CheckForDeath;
-        SetHp(startHp);
-    }
-
     private void OnEnable()
     {
-        OnHpChanged += CheckForDeath;
+        OnHpChanged += CheckForDeath;;
+        SetHp(startHp);
     }
 
     private void OnDestroy()

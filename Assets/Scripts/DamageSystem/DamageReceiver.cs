@@ -6,14 +6,14 @@ using UnityEngine;
 [RequireComponent(typeof(AbstractUnit))]
 public class DamageReceiver : MonoBehaviour, IDamageReceiver
 {
-    private AbstractUnit _selfUnit;
+    private AbstractUnit _hpContainer;
     public void Awake()
     {
-        _selfUnit = GetComponent<AbstractUnit>();
+        _hpContainer = GetComponent<AbstractUnit>();
     }
 
     public void ReceiveDamage(Damage damage)
     {
-        _selfUnit.SetHp(_selfUnit.GetHp() - damage.DmgValue);
+        _hpContainer.SetHp(_hpContainer.GetHp() - damage.DmgValue);
     }
 }

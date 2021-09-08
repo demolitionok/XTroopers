@@ -463,7 +463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 1637908428}
   projectilePrefab: {fileID: 2649074186597060857, guid: 364f89844b7b91f45b3b4d3a161efcef, type: 3}
-  speed: 1
+  speed: 2
 --- !u!114 &717664472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,8 +476,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 933dbd99da281cd43a2bd53ac89048c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 100
-  dmgValue: 0
+  startHp: 1
+  _hp: 0
+--- !u!114 &717664473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717664468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57528c3f5abbb3146a8c97fe72750354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &717664474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717664468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d62ea6aa46c4904e8e8e5f1a583bacf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dmgValue: 50
 --- !u!114 &717664475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,8 +1390,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 933dbd99da281cd43a2bd53ac89048c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 100
-  dmgValue: 0
+  startHp: 100
+  _hp: 0
+--- !u!114 &3545508092892859624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3545508092892859622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57528c3f5abbb3146a8c97fe72750354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3545508092892859628 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 482815882102895225, guid: 501af9c65f837864eb16cbf4fac83d9f, type: 3}

@@ -6,6 +6,6 @@ public static class DamageService
 {
     public static void TransferDamage(IDamageReceiver damageReceiver, IDamageDealer damageDealer)
     {
-        damageReceiver.ReceiveDamage(damageDealer.DealDamage());
+        damageReceiver.ReceiveDamage(damageDealer.GetDamage());
     }
 }

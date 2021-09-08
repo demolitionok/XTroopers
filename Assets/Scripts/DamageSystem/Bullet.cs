@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour, IDamageDealer
     [SerializeField]
     private float dmgValue;
     
-    public Damage DealDamage()
+    public Damage GetDamage()
     {
         return new Damage
         {

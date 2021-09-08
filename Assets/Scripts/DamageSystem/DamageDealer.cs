@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,24 +7,16 @@ public class DamageDealer : MonoBehaviour, IDamageDealer
 {
     [SerializeField]
     private float dmgValue;
-    
-    public Damage DealDamage()
+
+    private Damage _damage;
+
+    public Damage GetDamage() => _damage;
+
+    public void Awake()
     {
-        return new Damage
+        _damage = new Damage
         {
             DmgValue = dmgValue
         };
-    }
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
