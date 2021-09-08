@@ -249,15 +249,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2382891247411235432, guid: 862c741759dcc146e896b48439650f12, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2382891247411235432, guid: 862c741759dcc146e896b48439650f12, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2382891247411235432, guid: 862c741759dcc146e896b48439650f12, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2382891247411235432, guid: 862c741759dcc146e896b48439650f12, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -464,7 +464,6 @@ MonoBehaviour:
   attackPoint: {fileID: 1637908428}
   projectilePrefab: {fileID: 2649074186597060857, guid: 364f89844b7b91f45b3b4d3a161efcef, type: 3}
   speed: 1
-  allyLayer: 0
 --- !u!114 &717664472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -890,7 +889,6 @@ MonoBehaviour:
   attackPoint: {fileID: 0}
   projectilePrefab: {fileID: 0}
   speed: 0
-  allyLayer: 0
 --- !u!1 &1637908427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,7 +1517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2382891247411235432, guid: 862c741759dcc146e896b48439650f12, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.26
       objectReference: {fileID: 0}
     - target: {fileID: 2382891247411235432, guid: 862c741759dcc146e896b48439650f12, type: 3}
       propertyPath: m_LocalRotation.w
