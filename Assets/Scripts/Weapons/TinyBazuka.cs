@@ -14,7 +14,7 @@ public class TinyBazuka : AbstractWeapon
         flash.SetActive(false);
     }
     
-    public override void OpenFire(Transform target)
+    protected override void SpawnBullet(Transform target)
     {
         transform.LookAt(target);
         if(flash != null)
