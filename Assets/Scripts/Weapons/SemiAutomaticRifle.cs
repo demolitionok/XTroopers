@@ -11,11 +11,13 @@ public class SemiAutomaticRifle : AbstractWeapon
 
     public override void OpenFire(Transform target)
     {
-        GameObject bullet =
+        GameObject projectileObject =
             Instantiate(projectilePrefab, attackPoint.position,
                 Quaternion.Euler(new Vector3(90f, 0, 0)));
-        bullet.GetComponent<ARBullet>().InitBullet(_damageDealer);
-        bullet.GetComponent<Rigidbody>().velocity = attackPoint.forward * bulletSpeed;
-        Destroy(bullet, 3f);
+        var projectile = projectileObject.GetComponent<Projectile>();
+        projectile.InitProjectile(_damageDealer, null, false);
+        
+        projectileObject.GetComponent<Rigidbody>().velocity = attackPoint.forward * bulletSpeed;
+        Destroy(projectileObject, 3f);
     }
 }

@@ -4,15 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Automatic Riffle Bullet
-public class ARBullet : MonoBehaviour
+public class ARBullet : Projectile
 {
-    private IDamageDealer _damageDealer;
-
-    public void InitBullet(IDamageDealer damageDealer)
-    {
-        _damageDealer = damageDealer;
-    }
-
     private void OnCollisionEnter(Collision other)
     {
         var collisionGameObject = other.gameObject;

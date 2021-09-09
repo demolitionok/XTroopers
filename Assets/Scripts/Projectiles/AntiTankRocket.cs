@@ -1,24 +1,11 @@
 using UnityEngine;
 
-public class AntiTankRocket : MonoBehaviour
+public class AntiTankRocket : Projectile
 {
-    [SerializeField] 
-    private GameObject explosion;
-    private Transform _targetForRocket;
-    private IDamageDealer _damageDealer;
-    private bool _launcherIsActive;
-    
-    public void InitBullet(IDamageDealer damageDealer, Transform targetForRocket, bool launcherIsActive)
-    {
-        _damageDealer = damageDealer;
-        _targetForRocket = targetForRocket;
-        _launcherIsActive = launcherIsActive;
-    }
-    
     void Update()
     {
         if (_launcherIsActive)
-            StartRocketMove(_targetForRocket);
+            StartRocketMove(_target);
     }
     
     public void StartRocketMove(Transform target)

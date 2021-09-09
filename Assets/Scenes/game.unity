@@ -461,9 +461,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536b77a0c93089649b7eaa5fb3a9f8b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPoint: {fileID: 1637908428}
   projectilePrefab: {fileID: 2649074186597060857, guid: 364f89844b7b91f45b3b4d3a161efcef, type: 3}
-  speed: 2
+  attackPoint: {fileID: 1637908428}
+  bulletSpeed: 2
 --- !u!114 &717664472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -912,7 +912,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 4172165976362526935, guid: 7517791790fe0ad459c8efa5ebdb4b14, type: 3}
-  rocketPosition: {fileID: 2128068533}
+  attackPoint: {fileID: 2128068533}
+  bulletSpeed: 2
 --- !u!114 &1588361832
 MonoBehaviour:
   m_ObjectHideFlags: 0
