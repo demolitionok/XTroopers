@@ -2,20 +2,11 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(DamageDealer))]
-public class MissleLauncher : MonoBehaviour, IWeapon
+public class MissleLauncher : AbstractWeapon
 {
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform rocketPosition;
-    private IDamageDealer _damageDealer;
-        
-    private void Awake()
+    public override void OpenFire(Transform target)
     {
-        _damageDealer = GetComponent<IDamageDealer>();
-    }
-
-    public void OpenFire(Transform target)
-    {
-        GameObject rocket = Instantiate(projectilePrefab, rocketPosition.position, Quaternion.identity);
+        GameObject rocket = Instantiate(projectilePrefab, attackPoint.position, Quaternion.identity);
         AntiTankRocket activeRocket = rocket.GetComponent<AntiTankRocket>();
         activeRocket.InitBullet(_damageDealer, target, true);
     }
