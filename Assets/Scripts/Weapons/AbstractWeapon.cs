@@ -11,9 +11,9 @@ public abstract class AbstractWeapon : MonoBehaviour, IWeapon
     [SerializeField]
     protected float timeBetweenShots;
     [SerializeField]
-    protected Transform attackPoint;
+    protected Transform shootingPoint;
     [SerializeField]
-    protected float bulletSpeed;
+    protected float projectileSpeed;
     [SerializeField]
     protected GameObject flash;
     
