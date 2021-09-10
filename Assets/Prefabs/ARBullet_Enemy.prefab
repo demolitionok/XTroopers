@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 335195048113385084}
   - component: {fileID: 335195048113385086}
   - component: {fileID: 335195048113385087}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,8 +93,8 @@ GameObject:
   - component: {fileID: 335195048704412511}
   - component: {fileID: 335195048704412508}
   - component: {fileID: 335195048704412509}
-  m_Layer: 9
-  m_Name: ARBullet
+  m_Layer: 8
+  m_Name: ARBullet_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
