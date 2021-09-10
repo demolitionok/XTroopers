@@ -10,7 +10,7 @@ public class SemiAutomaticRifle : AbstractWeapon
         var projectile = projectileObject.GetComponent<Projectile>();
         
         projectile.InitProjectile(_damageDealer, null, false);
-        projectileObject.GetComponent<Rigidbody>().velocity = attackPoint.forward * bulletSpeed;
+        projectileObject.GetComponent<Rigidbody>().velocity = projectileObject.transform.forward * bulletSpeed;
         Destroy(projectileObject, 3f);
     }
 }

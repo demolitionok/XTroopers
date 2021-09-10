@@ -32,10 +32,7 @@ public abstract class AbstractWeapon : MonoBehaviour, IWeapon
         shotCooldown = timeBetweenShots;
     }
 
-    protected virtual void SpawnBullet(Transform target)
-    {
-        Debug.Log("Base");
-    }
+    protected abstract void SpawnBullet(Transform target);
 
     public void OpenFire(Transform target)
     {
