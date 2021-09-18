@@ -1,11 +1,8 @@
 using UnityEngine;
 
-public class TinyBazuka : MonoBehaviour,IWeapon
+public class TinyBazuka : AbstractWeapon
 {
-    [SerializeField] private Transform shootingPoint;
     [SerializeField] private Rigidbody bulletPrefab;
-    [SerializeField] private GameObject flash;
-    [SerializeField] private float speed;
     private bool _readyToShoot;
     
     
@@ -14,22 +11,15 @@ public class TinyBazuka : MonoBehaviour,IWeapon
         flash.SetActive(false);
     }
     
-
-
-    public void OpenFire(Transform target)
+    protected override void SpawnBullet(Transform target)
     {
         transform.LookAt(target);
         if(flash != null)
             flash.SetActive(true);
         Rigidbody bullet = Instantiate(bulletPrefab, shootingPoint.position, Quaternion.identity);
-        bullet.AddForce(shootingPoint.forward * speed, ForceMode.Impulse);
-        Invoke("FlashController",0.5f);
+        bullet.AddForce(shootingPoint.forward * projectileSpeed, ForceMode.Impulse);
+        Invoke(nameof(FlashController),0.5f);
         
     }
 
-    private void FlashController()
-    {
-        if(flash != null)
-            flash.SetActive(false);
-    }
 }

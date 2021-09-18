@@ -1,16 +1,13 @@
+using System;
 using UnityEngine;
 
-public class MissleLauncher : MonoBehaviour ,IWeapon
+[RequireComponent(typeof(DamageDealer))]
+public class MissleLauncher : AbstractWeapon
 {
-    [SerializeField] private GameObject rocket;
-    [SerializeField] private Transform rocketPosition;
-    
-
-    public void OpenFire(Transform target)
+    protected override void SpawnBullet(Transform target)
     {
-        Instantiate(rocket, rocketPosition.position, Quaternion.identity);
-        AntiTankRocket activeRocket = rocket.GetComponent<AntiTankRocket>();
-        activeRocket.targetForRocket = target;
-        activeRocket.launcherIsActive = true;
+        GameObject rocket = Instantiate(projectilePrefab, shootingPoint.position, Quaternion.identity);
+        var activeRocket = rocket.GetComponent<Projectile>();
+        activeRocket.InitProjectile(_damageDealer, target, true);
     }
 }
