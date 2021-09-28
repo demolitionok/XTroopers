@@ -1,20 +1,16 @@
 using System;
 using UnityEngine;
 
-public class LandMine : MonoBehaviour
+public class LandMine : Projectile
 {
-    [SerializeField] private GameObject landMine;
-    [SerializeField] private GameObject explosion;
-    [SerializeField] private float damage;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && other.CompareTag("Enemy"))
+        var collisionGameObject = other.gameObject;
+        if (collisionGameObject.TryGetComponent(out IDamageReceiver damageReceiver))
         {
-            explosion.SetActive(true);
-            landMine.SetActive(false);
-            // физический взрыв если нужно 
-            // нанесение урона
-            Destroy(gameObject, 1f);
+            impactEffect.SetActive(true);
+            DamageService.TransferDamage(damageReceiver, _damageDealer);
         }
+        Destroy(gameObject, 1f);
     }
 }
