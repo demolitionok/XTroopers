@@ -18,27 +18,26 @@ public abstract class AbstractWeapon : MonoBehaviour, IWeapon
     protected ParticleSystem flash;
     
     protected IDamageDealer _damageDealer;
-    [SerializeField]
-    protected float currentShotCooldown;
+    private float _currentShotCooldown;
 
     private void Update()
     {
-        currentShotCooldown -= Time.deltaTime;
+        _currentShotCooldown -= Time.deltaTime;
     }
 
     private void Awake()
     {
         _damageDealer = GetComponent<DamageDealer>();
-        currentShotCooldown = shotCooldown;
+        _currentShotCooldown = shotCooldown;
     }
 
     protected abstract void SpawnBullet(Transform target);
 
     public void OpenFire(Transform target)
     {
-        if (currentShotCooldown >= 0) return;
+        if (_currentShotCooldown >= 0) return;
 
-        currentShotCooldown = shotCooldown;
+        _currentShotCooldown = shotCooldown;
         flash.Play();
         SpawnBullet(target);
     }

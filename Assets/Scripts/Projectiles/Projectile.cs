@@ -15,7 +15,8 @@ public abstract class Projectile : MonoBehaviour
     public virtual void PlayImpactEffect(ContactPoint contactPoint)
     {
         Physics.Raycast(transform.position, transform.forward + transform.position, out RaycastHit hit, 1f);
-        Instantiate(impactEffect, hit.point, Quaternion.LookRotation(transform.forward + transform.position, hit.normal));
+        var impact = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+        impact.transform.Rotate(new Vector3(90f, 0f, 0f));
     }
 
     public void InitProjectile(IDamageDealer damageDealer, Transform targetForRocket, bool launcherIsActive)
