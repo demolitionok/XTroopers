@@ -6,11 +6,16 @@ public class SemiAutomaticRifle : AbstractWeapon
 {
     protected override void SpawnBullet(Transform target)
     {
-        GameObject projectileObject = Instantiate(projectilePrefab, shootingPoint.position, shootingPoint.rotation);
+        var projectileObject = Instantiate(projectilePrefab, shootingPoint.position, shootingPoint.rotation);
         var projectile = projectileObject.GetComponent<Projectile>();
         
         projectile.InitProjectile(_damageDealer, null, false);
-        projectileObject.GetComponent<Rigidbody>().velocity = projectileObject.transform.forward * projectileSpeed;
+        SetProjectileSpeed(projectileObject);
         Destroy(projectileObject, 3f);
+    }
+
+    private void SetProjectileSpeed(GameObject projectileObject)
+    {
+        projectileObject.GetComponent<Rigidbody>().velocity = projectileObject.transform.forward * projectileSpeed;
     }
 }
