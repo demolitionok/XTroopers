@@ -9,43 +9,36 @@ public abstract class AbstractWeapon : MonoBehaviour, IWeapon
     [SerializeField]
     protected GameObject projectilePrefab;
     [SerializeField]
-    protected float timeBetweenShots;
+    private float shotCooldown;
     [SerializeField]
     protected Transform shootingPoint;
     [SerializeField]
     protected float projectileSpeed;
     [SerializeField]
-    protected GameObject flash;
+    protected ParticleSystem flash;
     
     protected IDamageDealer _damageDealer;
-    [SerializeField]
-    protected float shotCooldown;
+    private float _currentShotCooldown;
 
     private void Update()
     {
-        shotCooldown -= Time.deltaTime;
+        _currentShotCooldown -= Time.deltaTime;
     }
 
     private void Awake()
     {
         _damageDealer = GetComponent<DamageDealer>();
-        shotCooldown = timeBetweenShots;
+        _currentShotCooldown = shotCooldown;
     }
 
     protected abstract void SpawnBullet(Transform target);
 
     public void OpenFire(Transform target)
     {
-        if (shotCooldown <= 0)
-        {
-            shotCooldown = timeBetweenShots;
-            SpawnBullet(target);
-        }
-    }
+        if (_currentShotCooldown >= 0) return;
 
-    protected virtual void FlashController()
-    {
-        if(flash != null)
-            flash.SetActive(false);
+        _currentShotCooldown = shotCooldown;
+        flash.Play();
+        SpawnBullet(target);
     }
 }
