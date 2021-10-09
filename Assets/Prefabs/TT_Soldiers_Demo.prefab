@@ -74,8 +74,6 @@ GameObject:
   - component: {fileID: 6069589452591990123}
   - component: {fileID: 6069589452591990124}
   - component: {fileID: 6069589452591990125}
-  - component: {fileID: 717664469}
-  - component: {fileID: 717664470}
   - component: {fileID: 717664471}
   - component: {fileID: 717664472}
   - component: {fileID: 717664473}
@@ -165,33 +163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcf1f80bd3ba47efac64356df5f7625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &717664469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2382891247411009032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2924456d02bb9af4695d3b120244a30b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &717664470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2382891247411009032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82860f2048cff962f86c0177226c4272, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 1
-  _surSlider: {fileID: 717664469}
-  _rigidbody: {fileID: 6069589452591990123}
 --- !u!114 &717664471
 MonoBehaviour:
   m_ObjectHideFlags: 0
