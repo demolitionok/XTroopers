@@ -168,6 +168,8 @@ GameObject:
   - component: {fileID: -4658105474375836607}
   - component: {fileID: -5643145938650137888}
   - component: {fileID: 3545508092892859623}
+  - component: {fileID: 4015748753496827901}
+  - component: {fileID: 3390066534675843575}
   m_Layer: 6
   m_Name: EnemySoldier
   m_TagString: Untagged
@@ -321,6 +323,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
+--- !u!114 &4015748753496827901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482815882103320089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c8d18a18b26d141a47217e0767b670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+--- !u!114 &3390066534675843575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482815882103320089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0387bcb16766c0429108e9477f65579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shootingDistance: 11
+  _findEnemiesRadius: 10
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 128
+  _currentEnemy: {fileID: 0}
+  OnEnemyFind:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4015748753496827901}
+        m_TargetAssemblyTypeName: CharacterRotator, Assembly-CSharp
+        m_MethodName: ChangeTarget
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &482815882103320091
 GameObject:
   m_ObjectHideFlags: 0
