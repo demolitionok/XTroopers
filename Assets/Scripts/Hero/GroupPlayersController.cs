@@ -24,8 +24,7 @@ public class GroupPlayersController : MonoBehaviour
     void Start()
     {
         leaderNavMesh = GetComponent<NavMeshAgent>();
-        GeneratePosPattern(); //запускать при смене количества персов
-        GetHeroProp(); //запускать при смене количества персов
+        ChangeHeroNumbers();
     }
 
     void Update()
@@ -74,7 +73,7 @@ public class GroupPlayersController : MonoBehaviour
         }
     }
 
-    public void GeneratePosPattern()
+    private void GeneratePosPattern()
     {
         List<Vector3> tempPosPattern = new List<Vector3>();
 
@@ -105,14 +104,22 @@ public class GroupPlayersController : MonoBehaviour
                 tempPosPattern.Add(new Vector3(2f,0,-2f));
                 tempPosPattern.Add(new Vector3(0,0,0));
                 break;
+            case 6:
+                tempPosPattern.Add(new Vector3(-2f,0,2f));
+                tempPosPattern.Add(new Vector3(2f,0,2f));
+                tempPosPattern.Add(new Vector3(0,0,2f));
+                tempPosPattern.Add(new Vector3(-2f,0,-2f));
+                tempPosPattern.Add(new Vector3(2f,0,-2f));
+                tempPosPattern.Add(new Vector3(0,0,0));
+                break;
             default:
-                //персонажей нет
+                //персонажей нет или слишком много
                 break;
         }
         heroPosPattern = tempPosPattern;
     }
 
-    public void GetHeroProp()
+    private void GetHeroProp()
     {
         List<UnitProp> tempHeroProp = new List<UnitProp>();
         UnitProp unitProp = new UnitProp();
@@ -125,5 +132,23 @@ public class GroupPlayersController : MonoBehaviour
             tempHeroProp.Add(unitProp);
         }
         heroProp = tempHeroProp;
+    }
+
+    private void ChangeHeroNumbers()  //запускать при смене количества персов
+    {
+        GeneratePosPattern();
+        GetHeroProp();
+    }
+
+    public void HeroNumberPlus(GameObject newHero)
+    {
+        Heroes.Add(newHero);
+        ChangeHeroNumbers();
+    }
+
+    public void HeroNumberMinus(GameObject deadHero)
+    {
+        Heroes.Remove(deadHero);
+        ChangeHeroNumbers();
     }
 }
