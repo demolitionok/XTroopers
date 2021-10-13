@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class AbstractUnit : MonoBehaviour
 {
@@ -9,15 +10,8 @@ public abstract class AbstractUnit : MonoBehaviour
     private float startHp;
     [SerializeField]
     private float _hp;
-    public event Action OnDeath;
+    public UnityEvent OnDeath;
     public event Action<float> OnHpChanged;
-    private GroupPlayersController iDead;
-
-    private void Awake()
-    {
-        iDead = GameObject.Find("Leader").GetComponent<GroupPlayersController>();
-        //iDead.HeroNumberPlus(gameObject);
-    }
 
     public void SetHp(float value)
     {
@@ -30,7 +24,6 @@ public abstract class AbstractUnit : MonoBehaviour
         if (hp <= 0)
         {
             _hp = 0;
-            iDead.HeroNumberMinus(gameObject);
             OnDeath?.Invoke();
             Destroy(gameObject);
         }
