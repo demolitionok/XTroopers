@@ -15,6 +15,16 @@ public class MenuController : MonoBehaviour
 	[SerializeField] private GameObject UnitMenu;
 	[SerializeField] private GameObject ClinicMenu;
 
+	void Start()
+	{
+			Hud.SetActive(false);
+			MainMenu.SetActive(true);
+			MissionMenu.SetActive(false);
+			StoreMenu.SetActive(false);
+			UnitMenu.SetActive(false);
+			ClinicMenu.SetActive(false);
+	}
+
 	public void OpenMenu()
 	{
 		if (menuOpen == false)
