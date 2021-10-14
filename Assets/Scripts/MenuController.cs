@@ -8,6 +8,7 @@ public class MenuController : MonoBehaviour
 {
 	private bool menuOpen = true;
 	private int heroCount;
+	[SerializeField] private bool isBase = true;
 	[SerializeField] private GameObject MainMenu;
 	[SerializeField] private GameObject Hud;
 	[SerializeField] private GameObject MissionMenu;
@@ -17,12 +18,15 @@ public class MenuController : MonoBehaviour
 
 	void Start()
 	{
+		if(isBase)
+		{
 			Hud.SetActive(false);
 			MainMenu.SetActive(true);
 			MissionMenu.SetActive(false);
 			StoreMenu.SetActive(false);
 			UnitMenu.SetActive(false);
 			ClinicMenu.SetActive(false);
+		}
 	}
 
 	public void OpenMenu()
