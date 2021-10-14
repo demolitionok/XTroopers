@@ -31,9 +31,9 @@ public class ViewManager : MonoBehaviour
 
     public void ShowView<T>(bool remember = true) where T : View
     {
-        for (int i = 0; i < _views.Length; i++)
+        for (int i = 0; i < instance._views.Length; i++)
         {
-            if (_views[i] is T view)
+            if (instance._views[i] is T view)
             {
                 if (instance._currentView != null)
                 {
@@ -54,9 +54,9 @@ public class ViewManager : MonoBehaviour
         {
             if (remember)
             {
-                _history.Push(view);
+                instance._history.Push(view);
             }
-            _currentView.Hide();
+            instance._currentView.Hide();
         }
         view.Show();
 
