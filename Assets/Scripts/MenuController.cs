@@ -59,6 +59,11 @@ public class MenuController : MonoBehaviour
 		objParrent.SetActive(false);
 	}
 
+	public void ReturnToBase()
+	{
+        SceneManager.LoadScene("home-base");
+	}
+
 	public void Exit()
 	{
 		Application.Quit();
