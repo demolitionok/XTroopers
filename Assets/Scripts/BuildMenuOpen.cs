@@ -6,10 +6,21 @@ using UnityEngine.SceneManagement;
 public class BuildMenuOpen : MonoBehaviour
 {
     public GameObject buildMenu;
+    private MenuController gameMenu;
+    private bool menuIsOpen;
+
+    void Start()
+    {
+        gameMenu = GameObject.Find("Menu").GetComponent<MenuController>();
+    }
 
     void OnMouseDown()
     {
-        buildMenu.SetActive(true); 
+        menuIsOpen = gameMenu.MenuIsOpen();
+        if (menuIsOpen == false)
+        {
+            buildMenu.SetActive(true);
+        } 
     }
 
 }
