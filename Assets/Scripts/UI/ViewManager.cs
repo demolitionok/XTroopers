@@ -11,8 +11,6 @@ public class ViewManager : MonoBehaviour
     private static ViewManager s_instance;
 
     [SerializeField]
-    private GameObject Canvas;
-    [SerializeField]
     private View[] _views;
     [SerializeField]
     private View _startingView;
@@ -24,9 +22,6 @@ public class ViewManager : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(Canvas);
-        DontDestroyOnLoad(gameObject);
-        
         foreach (var view in _views)
         {
             view.Initialize();
@@ -53,13 +48,12 @@ public class ViewManager : MonoBehaviour
     {
         if (s_instance._currentView != null)
         {
-            if (remember)
-            {
-                s_instance._history.Push(s_instance._currentView);
-            }
             s_instance._currentView.Hide();
         }
-        
+        if (remember)
+        {
+            s_instance._history.Push(s_instance._currentView);
+        }
         if(view != null)
             view.Show();
         
