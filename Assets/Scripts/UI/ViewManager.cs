@@ -20,9 +20,35 @@ public class ViewManager : MonoBehaviour
 
     private void Awake() => s_instance = this;
 
-    public T GetView<T>() where T : View => s_instance._views.FirstOrDefault(v => v is T) as T;
+    private void Start()
+    {
+        foreach (var view in _views)
+        {
+            view.Initialize();
+            view.Hide();
+        }
 
-    public void ShowView<T>(bool remember = true) where T : View
+        if (_startingView != null)
+        {
+            ShowView(_startingView);
+        }
+    }
+
+    //public static T GetView<T>() where T : View => s_instance._views.FirstOrDefault(v => v is T) as T;
+    public static T GetView<T>() where T : View
+    {
+        for (int i = 0; i < s_instance._views.Length; i++)
+        {
+            if (s_instance._views[i] is T view)
+            {
+                return view;
+            }
+        }
+
+        return null;
+    }
+
+    public static void ShowView<T>(bool remember = true) where T : View
     {
         var view = GetView<T>();
         if (view != null)
@@ -30,24 +56,28 @@ public class ViewManager : MonoBehaviour
         else
             Debug.Log("view was null");
     }
-    public void ShowView(View view, bool remember = true)
+    public static void ShowView(View view, bool remember = true)
     {
         if (s_instance._currentView != null)
         {
             if (remember)
             {
-                s_instance._history.Push(view);
+                s_instance._history.Push(s_instance._currentView);
             }
             s_instance._currentView.Hide();
         }
-        view.Show();
-
+        
+        if(view != null)
+            view.Show();
+        
         s_instance._currentView = view;
     }
 
-    public void ShowLast()
+    public static void HideCurrentView() => ShowView(null, false);
+
+    public static void ShowLast()
     {
         if(s_instance._history.Count != 0)
-            s_instance.ShowView(s_instance._history.Pop(), false);
+            ShowView(s_instance._history.Pop(), false);
     }
 }
