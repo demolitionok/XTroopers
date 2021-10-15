@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class AbstractUnit : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public abstract class AbstractUnit : MonoBehaviour
     private float startHp;
     [SerializeField]
     private float _hp;
-    public event Action OnDeath;
+    public UnityEvent OnDeath;
     public event Action<float> OnHpChanged;
 
     public void SetHp(float value)

@@ -18,9 +18,9 @@ public class ShootingController : MonoBehaviour
         _weapon = GetComponent<IWeapon>();
     }
 
-    private void ChooseTarget()
+    public void ChangeTarget(Transform target)
     {
-        
+        _target = target;
     }
 
     private void Update()

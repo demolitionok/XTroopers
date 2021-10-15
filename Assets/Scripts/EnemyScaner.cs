@@ -11,7 +11,7 @@ public class EnemyScaner : MonoBehaviour
     [SerializeField] private LayerMask whatIsEnemy;
     [HideInInspector] public Transform _currentEnemy;
 
-    public event UnityAction<Transform> OnEnemyFind; 
+    public UnityEvent<Transform> OnEnemyFind; 
     
 
     private void Awake()
@@ -46,6 +46,7 @@ public class EnemyScaner : MonoBehaviour
             {
                 _currentEnemy = obj.transform;
                 OnEnemyFind?.Invoke(_currentEnemy);
+                
                 break;
             }
         }
