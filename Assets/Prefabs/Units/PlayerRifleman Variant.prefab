@@ -1,5 +1,64 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &717664469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478699263695865851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c8d18a18b26d141a47217e0767b670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+--- !u!114 &717664470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478699263695865851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0387bcb16766c0429108e9477f65579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shootingDistance: 20
+  _findEnemiesRadius: 20
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 64
+  _currentEnemy: {fileID: 0}
+  OnEnemyFind:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 717664469}
+        m_TargetAssemblyTypeName: CharacterRotator, Assembly-CSharp
+        m_MethodName: ChangeTarget
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1115604472370606380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478699263695865851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 951a4364fd18c0b4a937dca5e607c305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
 --- !u!114 &5020353994645675710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25,8 +84,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 717664472, guid: 862c741759dcc146e896b48439650f12, type: 3}
+      propertyPath: startHp
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 717664472, guid: 862c741759dcc146e896b48439650f12, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 717664474, guid: 862c741759dcc146e896b48439650f12, type: 3}
+      propertyPath: dmgValue
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 717664475, guid: 862c741759dcc146e896b48439650f12, type: 3}
       propertyPath: _target
