@@ -11,6 +11,8 @@ public class ViewManager : MonoBehaviour
     private static ViewManager s_instance;
 
     [SerializeField]
+    private GameObject Canvas;
+    [SerializeField]
     private View[] _views;
     [SerializeField]
     private View _startingView;
@@ -22,6 +24,8 @@ public class ViewManager : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(Canvas);
+        
         foreach (var view in _views)
         {
             view.Initialize();
@@ -34,20 +38,8 @@ public class ViewManager : MonoBehaviour
         }
     }
 
-    //public static T GetView<T>() where T : View => s_instance._views.FirstOrDefault(v => v is T) as T;
-    public static T GetView<T>() where T : View
-    {
-        for (int i = 0; i < s_instance._views.Length; i++)
-        {
-            if (s_instance._views[i] is T view)
-            {
-                return view;
-            }
-        }
-
-        return null;
-    }
-
+    public static T GetView<T>() where T : View => s_instance._views.FirstOrDefault(v => v is T) as T;
+    
     public static void ShowView<T>(bool remember = true) where T : View
     {
         var view = GetView<T>();
