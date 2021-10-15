@@ -25,6 +25,7 @@ public class ViewManager : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(Canvas);
+        DontDestroyOnLoad(gameObject);
         
         foreach (var view in _views)
         {
