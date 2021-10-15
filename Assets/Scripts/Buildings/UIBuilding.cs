@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIBuilding : Building
+public class UIBuilding : MonoBehaviour
 {
-    public override void OnPointerClick(PointerEventData eventData)
+    [SerializeField]
+    private View viewToShow;
+    
+    public void OnMouseDown()
     {
+        ViewManager.ShowView(viewToShow);
     }
 }

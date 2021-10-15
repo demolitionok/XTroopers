@@ -16,7 +16,7 @@ public class MissionMenuView : View
     {
         startButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("game");
+            SceneManager.LoadScene("Scenes/game");
         });
         backButton.onClick.AddListener(ViewManager.ShowLast);
     }
