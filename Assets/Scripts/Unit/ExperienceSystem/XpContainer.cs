@@ -5,17 +5,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using JetBrains.Annotations;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class XpContainer : MonoBehaviour
+public class XpContainer : MonoBehaviour, IXpProvider, IXpReceiver
 {
     [SerializeField]
-    private int _initialXpForNextLevel = 100;
-    [SerializeField]
-    private int _startLevel = 1;
-    
-    private int _xpForNextLvlGain = 100;
+    private XpSystemConfig _xpSystemConfig;
     
     private int _totalXp;
     
@@ -24,24 +21,24 @@ public class XpContainer : MonoBehaviour
 
     public UnityEvent<int> OnXpGain;
     public UnityEvent<int> OnLvlUp;
-    
+
     private int GetLevelXp()
     {
-        var sum = Enumerable.Range(1, GetLevel() - _startLevel).Aggregate(0,(a, b) => a + b);
-        return _totalXp - sum * _xpForNextLvlGain;
+        var sum = Enumerable.Range(1, GetLevel() - _xpSystemConfig.startLevel).Aggregate(0,(a, b) => a + b);
+        return _totalXp - sum * _xpSystemConfig.xpForNextLvlGain;
     }
-    private int GetXpForNextLevel() => _initialXpForNextLevel + (GetLevel() - _startLevel) * _xpForNextLvlGain;
+    private int GetXpForNextLevel() => _xpSystemConfig.initialXpForNextLevel + (GetLevel() - _xpSystemConfig.startLevel) * _xpSystemConfig.xpForNextLvlGain;
     private int GetLevel() => _cachedTotalXp == _totalXp ? _cachedLevel : RecalculateLevel();
     private int RecalculateLevel()
     {
         var leftXp = _totalXp;
         var newLevel = 0;
-        var curLevelXp = _initialXpForNextLevel;
+        var curLevelXp = _xpSystemConfig.initialXpForNextLevel;
 
         while (leftXp > curLevelXp)
         {
             leftXp -= curLevelXp;
-            curLevelXp += _xpForNextLvlGain;
+            curLevelXp += _xpSystemConfig.xpForNextLvlGain;
             newLevel++;
         }
 
@@ -57,6 +54,7 @@ public class XpContainer : MonoBehaviour
 
     private int GetXpBeforeNextLevel() => GetXpForNextLevel() - GetLevelXp();
     
+    public int GetTotalXp() => _totalXp;
     public void AddXp(int xpAmount)
     {
         var oldLevel = GetLevel();
@@ -69,7 +67,6 @@ public class XpContainer : MonoBehaviour
         OnXpGain.Invoke(xpAmount);
     }
     
-
     private void Awake()
     {
     }
