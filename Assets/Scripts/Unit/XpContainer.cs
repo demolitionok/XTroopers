@@ -31,41 +31,41 @@ public class XpContainer : MonoBehaviour
         return _totalXp - sum * _xpForNextLvlGain;
     }
     private int GetXpForNextLevel() => _initialXpForNextLevel + (GetLevel() - _startLevel) * _xpForNextLvlGain;
-    private int GetLevel()
+    private int GetLevel() => _cachedTotalXp == _totalXp ? _cachedLevel : RecalculateLevel();
+    private int RecalculateLevel()
     {
-        if (_cachedTotalXp == _totalXp)
-        {
-            return _cachedLevel;
-        }
-        else
-        {
-            var leftXp = _totalXp;
-            var newLevel = 0;
-            var curLevelXp = _initialXpForNextLevel;
-            
-            while(leftXp > curLevelXp)
-            {
-                leftXp -= curLevelXp;
-                curLevelXp += _xpForNextLvlGain;
-                newLevel++;
-            }
+        var leftXp = _totalXp;
+        var newLevel = 0;
+        var curLevelXp = _initialXpForNextLevel;
 
-            _cachedLevel = newLevel;
-            for (int level = _cachedLevel; level <= newLevel; level++)
-            {
-                OnLvlUp.Invoke(level);
-            }
-
-            _cachedTotalXp = _totalXp;
-            
-            return newLevel;
+        while (leftXp > curLevelXp)
+        {
+            leftXp -= curLevelXp;
+            curLevelXp += _xpForNextLvlGain;
+            newLevel++;
         }
+
+        CacheLevel(newLevel);
+
+        return newLevel;
     }
+    private void CacheLevel(int newLevel)
+    {
+        _cachedTotalXp = _totalXp;
+        _cachedLevel = newLevel;
+    }
+
     private int GetXpBeforeNextLevel() => GetXpForNextLevel() - GetLevelXp();
     
-    public void GainXp(int xpAmount)
+    public void AddXp(int xpAmount)
     {
-        _totalXp += xpAmount;//TODO: if level updates incorrectly invoke GetLevel here
+        var oldLevel = GetLevel();
+        _totalXp += xpAmount;
+        var newLevel = GetLevel();
+        
+        for (int level = oldLevel; level <= newLevel; level++)
+            OnLvlUp.Invoke(newLevel);
+        
         OnXpGain.Invoke(xpAmount);
     }
     
