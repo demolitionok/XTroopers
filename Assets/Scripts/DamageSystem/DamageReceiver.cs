@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AbstractUnit))]
+[RequireComponent(typeof(HpContainer))]
 public class DamageReceiver : MonoBehaviour, IDamageReceiver
 {
-    private AbstractUnit _hpContainer;
+    private HpContainer _hpContainer;
     public void Awake()
     {
-        _hpContainer = GetComponent<AbstractUnit>();
+        _hpContainer = GetComponent<HpContainer>();
     }
 
     public void ReceiveDamage(Damage damage)
