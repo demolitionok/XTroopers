@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class AbstractUnit : MonoBehaviour
+public class HpContainer : MonoBehaviour
 {
     [SerializeField]
     private float startHp;
-    [SerializeField]
+    
     private float _hp;
     public UnityEvent OnDeath;
     public event Action<float> OnHpChanged;

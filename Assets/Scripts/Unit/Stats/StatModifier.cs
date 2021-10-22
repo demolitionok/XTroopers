@@ -8,7 +8,7 @@ public class StatModifier
 {
     private readonly float _value;
 
-    public float GetValue() =>_value;
+    public float GetValue() => _value;
 
     public StatModifier()
     {
