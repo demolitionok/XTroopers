@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageDealer : MonoBehaviour, IDamageDealer
+public class DamageProvider : MonoBehaviour, IDamageProvider
 {
     [SerializeField]
     private float dmgValue;

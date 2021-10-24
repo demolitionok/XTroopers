@@ -4,8 +4,8 @@ using UnityEngine;
 
 public static class DamageService
 {
-    public static void TransferDamage(IDamageReceiver damageReceiver, IDamageDealer damageDealer)
+    public static void TransferDamage(IDamageReceiver damageReceiver, IDamageProvider damageProvider)
     {
-        damageReceiver.ReceiveDamage(damageDealer.GetDamage());
+        damageReceiver.ReceiveDamage(damageProvider.GetDamage());
     }
 }

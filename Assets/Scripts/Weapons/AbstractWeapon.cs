@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(DamageDealer))]
+[RequireComponent(typeof(IDamageProvider))]
 public abstract class AbstractWeapon : MonoBehaviour, IWeapon
 {
     [SerializeField]
@@ -17,7 +17,7 @@ public abstract class AbstractWeapon : MonoBehaviour, IWeapon
     [SerializeField]
     protected ParticleSystem flash;
     
-    protected IDamageDealer _damageDealer;
+    protected IDamageProvider damageProvider;
     private float _currentShotCooldown;
 
     private void Update()
@@ -27,7 +27,7 @@ public abstract class AbstractWeapon : MonoBehaviour, IWeapon
 
     private void Awake()
     {
-        _damageDealer = GetComponent<DamageDealer>();
+        damageProvider = GetComponent<DamageProvider>();
         _currentShotCooldown = shotCooldown;
     }
 

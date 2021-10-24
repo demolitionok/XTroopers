@@ -15,7 +15,7 @@ public class ExplosiveMissle : Projectile
         {
             if (hitCollider.TryGetComponent(out IDamageReceiver damageReceiver))
             {
-                DamageService.TransferDamage(damageReceiver, _damageDealer);
+                DamageService.TransferDamage(damageReceiver, damageProvider);
             }
         }
     }

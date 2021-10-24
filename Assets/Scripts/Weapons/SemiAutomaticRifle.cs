@@ -9,7 +9,7 @@ public class SemiAutomaticRifle : AbstractWeapon
         var projectileObject = Instantiate(projectilePrefab, shootingPoint.position, shootingPoint.rotation);
         var projectile = projectileObject.GetComponent<Projectile>();
         
-        projectile.InitProjectile(_damageDealer, null, false);
+        projectile.InitProjectile(damageProvider, null, false);
         SetProjectileSpeed(projectileObject);
         Destroy(projectileObject, 3f);
     }

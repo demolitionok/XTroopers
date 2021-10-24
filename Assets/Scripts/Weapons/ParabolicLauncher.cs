@@ -11,6 +11,6 @@ public class ParabolicLauncher : AbstractWeapon
         var rigidbody = projectile.GetComponent<Rigidbody>();
         
         rigidbody.AddForce(projectileSpeed * shootingPoint.forward, ForceMode.Impulse);
-        activeRocket.InitProjectile(_damageDealer, target, true);
+        activeRocket.InitProjectile(damageProvider, target, true);
     }
 }

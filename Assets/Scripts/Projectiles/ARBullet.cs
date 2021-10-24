@@ -14,7 +14,7 @@ public class ARBullet : Projectile
         
         if (collisionGameObject.TryGetComponent(out IDamageReceiver damageReceiver))
         {
-            DamageService.TransferDamage(damageReceiver, _damageDealer);
+            DamageService.TransferDamage(damageReceiver, damageProvider);
         }
         Destroy(gameObject);
     }

@@ -9,7 +9,7 @@ public class LandMine : Projectile
         if (collisionGameObject.TryGetComponent(out IDamageReceiver damageReceiver))
         {
             impactEffect.SetActive(true);
-            DamageService.TransferDamage(damageReceiver, _damageDealer);
+            DamageService.TransferDamage(damageReceiver, damageProvider);
         }
         Destroy(gameObject, 1f);
     }

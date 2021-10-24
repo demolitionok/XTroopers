@@ -9,7 +9,7 @@ public abstract class Projectile : MonoBehaviour
     protected GameObject impactEffect;
 
     protected Transform _target;
-    protected IDamageDealer _damageDealer;
+    protected IDamageProvider damageProvider;
     protected bool _launcherIsActive;
 
     public virtual void PlayImpactEffect(ContactPoint contactPoint)
@@ -19,9 +19,9 @@ public abstract class Projectile : MonoBehaviour
         impact.transform.Rotate(new Vector3(90f, 0f, 0f));
     }
 
-    public void InitProjectile(IDamageDealer damageDealer, Transform targetForRocket, bool launcherIsActive)
+    public void InitProjectile(IDamageProvider damageProvider, Transform targetForRocket, bool launcherIsActive)
     {
-        _damageDealer = damageDealer;
+        this.damageProvider = damageProvider;
         _target = targetForRocket;
         _launcherIsActive = launcherIsActive;
     }
