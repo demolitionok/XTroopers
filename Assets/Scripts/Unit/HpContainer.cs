@@ -4,11 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(StatContainer))]
 public class HpContainer : MonoBehaviour
 {
     [SerializeField]
-    private float startHp;
+    private StatContainer statContainer;
     
+    
+    [SerializeField]
+    private float startHp;
+
     private float _hp;
     public UnityEvent OnDeath;
     public event Action<float> OnHpChanged;
@@ -18,6 +23,8 @@ public class HpContainer : MonoBehaviour
         _hp = value;
         OnHpChanged?.Invoke(value);
     }
+
+    public void HpMinus(float value) => SetHp(GetHp() - value);
 
     private void CheckForDeath(float hp)
     {
@@ -29,7 +36,7 @@ public class HpContainer : MonoBehaviour
         }
     }
 
-    public float GetHp() => _hp;
+    public float GetHp() => statContainer.vitality.GetValue() + _hp;
 
     private void OnEnable()
     {

@@ -9,4 +9,5 @@ public class StatContainer : MonoBehaviour
     public Stat vitality;
     public Stat accuracy;
     public Stat strength;
+    
 }
