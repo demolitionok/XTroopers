@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c593ba82d5ddd468678fdad8217667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactEffect: {fileID: 0}
+  impactEffect: {fileID: 100006, guid: 2126395fd1f8b3845bb0e820a32dcb66, type: 3}
   explosionRadius: 2
 --- !u!54 &5493332127314079277
 Rigidbody:

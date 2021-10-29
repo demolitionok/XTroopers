@@ -36,7 +36,7 @@ public class HpContainer : MonoBehaviour
         }
     }
 
-    public float GetHp() => statContainer.vitality.GetValue() + _hp;
+    public float GetHp() => _hp;
 
     private void OnEnable()
     {

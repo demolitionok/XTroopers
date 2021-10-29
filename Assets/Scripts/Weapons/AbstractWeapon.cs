@@ -20,7 +20,7 @@ public abstract class AbstractWeapon : MonoBehaviour, IWeapon
     protected IDamageProvider damageProvider;
     private float _currentShotCooldown;
 
-    private void Update()
+    protected virtual void Update()
     {
         _currentShotCooldown -= Time.deltaTime;
     }
