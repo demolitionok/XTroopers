@@ -16,14 +16,20 @@ public class GroupPlayersController : MonoBehaviour
     
     [Header("Hero")]
     public List<GameObject> Heroes;
+
+    [Header("Camera")]
+    public bool cameraFollow = false; //камера поворачивает за лидером
+    public bool cameraStab = false; //отцентрировать камеру при движении, если изменяли поворот
     
     private List<UnitProp> heroProp;
     private List<Vector3> heroPosPattern;
     private NavMeshAgent leaderNavMesh;
+    private HeroCamera heroCamera;
 
     void Start()
     {
         leaderNavMesh = GetComponent<NavMeshAgent>();
+        heroCamera = GameObject.Find("Main Camera").GetComponent<HeroCamera>();
         ChangeHeroNumbers();
     }
 
@@ -35,9 +41,21 @@ public class GroupPlayersController : MonoBehaviour
     private void GroupHeroMove(){
         if (_joystick.Horizontal !=0 || _joystick.Vertical !=0)
         {
-            var moveDirection = new Vector3(_joystick.Horizontal, 0, _joystick.Vertical);
-            var movePosition = transform.position + moveDirection;
-            leaderNavMesh.SetDestination(movePosition);
+            if(cameraFollow)
+            {
+                float v = _joystick.Vertical;
+		        float h = _joystick.Horizontal;
+                Vector3 moveDir = transform.position;
+                moveDir += transform.forward * v;
+                moveDir += transform.right * h;
+                leaderNavMesh.SetDestination(moveDir);
+            }
+            else
+            {
+                var moveDirection = new Vector3(_joystick.Horizontal, 0, _joystick.Vertical);
+                var movePosition = transform.position + moveDirection;
+                leaderNavMesh.SetDestination(movePosition);
+            }
 
             for(var i = 0; i < Heroes.Count; i++)
             {
@@ -45,6 +63,11 @@ public class GroupPlayersController : MonoBehaviour
                 heroProp[i].unitNavMesh.SetDestination(heroMovePosition);
                 heroProp[i].unitAnim.SetBool("isRun", true);
             }
+            if(cameraStab)
+                heroCamera.CameraStab();
+            if(cameraFollow)
+                heroCamera.CameraFollow(true);
+            else heroCamera.CameraFollow(false);
         }
         else
         {
@@ -133,6 +156,16 @@ public class GroupPlayersController : MonoBehaviour
         }
         heroProp = tempHeroProp;
     }
+
+    private void RotationNormal(Vector3 rotationDirection)
+	{
+		Vector3 targetDir = rotationDirection;
+		targetDir.y = 0;
+
+		Quaternion lookDir = Quaternion.LookRotation(targetDir);
+		Quaternion targetRot = Quaternion.Slerp(transform.rotation, lookDir, Time.deltaTime);
+		transform.rotation = targetRot;
+	}
 
     private void ChangeHeroNumbers()  //запускать при смене количества персов
     {

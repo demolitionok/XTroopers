@@ -15,9 +15,9 @@ MonoBehaviour:
   offset: {x: 0, y: -1, z: 1}
   correction: {x: 0, y: -1, z: 2}
   zoomSpeed: 4
-  minZoom: 5
-  maxZoom: 10
-  curZoom: 7
+  minZoom: 7
+  maxZoom: 15
+  curZoom: 10
   pitch: 2.5
   yawSpeed: 100
   curYaw: -2

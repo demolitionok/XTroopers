@@ -25,6 +25,7 @@ public class ShootingController : MonoBehaviour
 
     private void Update()
     {
-        _weapon.OpenFire(_target);
+        if (_target != null)
+            _weapon.OpenFire(_target);
     }
 }
