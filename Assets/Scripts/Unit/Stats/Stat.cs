@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 [Serializable]
 public class Stat
 {
     private readonly List<StatModifier> _modifiers;
+    [SerializeField]
     private float _value;
 
     public float GetValue()

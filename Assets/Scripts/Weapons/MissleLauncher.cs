@@ -8,6 +8,6 @@ public class MissleLauncher : AbstractWeapon
     {
         GameObject rocket = Instantiate(projectilePrefab, shootingPoint.position, Quaternion.identity);
         var activeRocket = rocket.GetComponent<Projectile>();
-        activeRocket.InitProjectile(damageProvider, target, true);
+        activeRocket.InitProjectile(damageProvider, target);
     }
 }

@@ -4,49 +4,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(StatContainer))]
 public class HpContainer : MonoBehaviour
 {
     [SerializeField]
-    private StatContainer statContainer;
-    
-    
-    [SerializeField]
-    private float startHp;
+    protected float startHp;
 
     private float _hp;
     public UnityEvent OnDeath;
-    public event Action<float> OnHpChanged;
+    public UnityEvent<float> OnHpChanged;
 
-    public void SetHp(float value)
+    protected void SetHp(float value)
     {
         _hp = value;
         OnHpChanged?.Invoke(value);
+        CheckForDeath();
     }
+    
+    private float GetHp() => _hp;
 
     public void HpMinus(float value) => SetHp(GetHp() - value);
 
-    private void CheckForDeath(float hp)
+    private void CheckForDeath()
     {
-        if (hp <= 0)
+        if (GetHp() <= 0)
         {
-            _hp = 0;
             OnDeath?.Invoke();
             Destroy(gameObject);
         }
     }
 
-    public float GetHp() => _hp;
 
-    private void OnEnable()
+    protected virtual void Awake()
     {
-        OnHpChanged += CheckForDeath;;
         SetHp(startHp);
     }
-
-    private void OnDestroy()
-    {
-        OnHpChanged -= CheckForDeath;
-    }
-
 }

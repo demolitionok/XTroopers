@@ -8,7 +8,7 @@ public class ExplosiveMissle : Projectile
     [SerializeField]
     private float explosionRadius;
 
-    public void Explode()
+    private void Explode()
     {
         var hitColliders = Physics.OverlapSphere(gameObject.transform.position, explosionRadius);
         foreach (var hitCollider in hitColliders)
@@ -23,6 +23,8 @@ public class ExplosiveMissle : Projectile
     public void OnCollisionEnter(Collision other)
     {
         Explode();
+        var contactPoint = other.GetContact(0);
+        PlayImpactEffect(contactPoint);
         Destroy(gameObject);
     }
 }

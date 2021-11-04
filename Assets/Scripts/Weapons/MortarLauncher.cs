@@ -28,7 +28,7 @@ public class MortarLauncher : AbstractWeapon
         float v2 = (g * x * x) / (2 * (y - Mathf.Tan(angleRadians) * x) * Mathf.Pow(Mathf.Cos(angleRadians), Random.Range(1.97f,2.08f)));//p = 2
         float v = Mathf.Sqrt(Mathf.Abs(v2));
         GameObject newBullet = Instantiate(projectilePrefab, shootingPoint.position , Quaternion.identity);
-        newBullet.GetComponent<Projectile>().InitProjectile(damageProvider, target, false);
+        newBullet.GetComponent<Projectile>().InitProjectile(damageProvider, target);
         newBullet.GetComponent<Rigidbody>().velocity = shootingPoint.forward  * v;
     }
 }

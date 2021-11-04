@@ -14,6 +14,6 @@ public class DamageReceiver : MonoBehaviour, IDamageReceiver
 
     public void ReceiveDamage(Damage damage)
     {
-        _hpContainer.SetHp(_hpContainer.GetHp() - damage.DmgValue);
+        _hpContainer.HpMinus(damage.DmgValue);
     }
 }

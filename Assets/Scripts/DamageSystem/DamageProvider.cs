@@ -10,9 +10,9 @@ public class DamageProvider : MonoBehaviour, IDamageProvider
 
     private Damage _damage;
 
-    public Damage GetDamage() => _damage;
+    public virtual Damage GetDamage() => _damage;
 
-    public void Awake()
+    public virtual void Awake()
     {
         _damage = new Damage
         {

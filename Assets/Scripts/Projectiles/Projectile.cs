@@ -19,10 +19,9 @@ public abstract class Projectile : MonoBehaviour
         impact.transform.Rotate(new Vector3(90f, 0f, 0f));
     }
 
-    public void InitProjectile(IDamageProvider damageProvider, Transform targetForRocket, bool launcherIsActive)
+    public void InitProjectile(IDamageProvider damageProvider, Transform targetForRocket)
     {
         this.damageProvider = damageProvider;
         _target = targetForRocket;
-        _launcherIsActive = launcherIsActive;
     }
 }
