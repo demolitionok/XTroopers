@@ -6,17 +6,10 @@ using UnityEngine;
 public class DamageProvider : MonoBehaviour, IDamageProvider
 {
     [SerializeField]
-    private float dmgValue;
+    protected float dmgValue;
+    [SerializeField]
+    protected LayerMask enemyLayer;
 
-    private Damage _damage;
+    public virtual Damage GetDamage() => new Damage(dmgValue, enemyLayer);
 
-    public virtual Damage GetDamage() => _damage;
-
-    public virtual void Awake()
-    {
-        _damage = new Damage
-        {
-            DmgValue = dmgValue
-        };
-    }
 }

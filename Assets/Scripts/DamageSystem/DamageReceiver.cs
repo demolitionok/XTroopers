@@ -14,6 +14,7 @@ public class DamageReceiver : MonoBehaviour, IDamageReceiver
 
     public void ReceiveDamage(Damage damage)
     {
-        _hpContainer.HpMinus(damage.DmgValue);
+        if(damage.enemyLayer == gameObject.layer)
+            _hpContainer.HpMinus(damage.dmgValue);
     }
 }

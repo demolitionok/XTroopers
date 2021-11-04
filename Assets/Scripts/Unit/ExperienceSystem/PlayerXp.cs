@@ -9,7 +9,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class XpContainer : MonoBehaviour, IXpProvider, IXpReceiver
+public class PlayerXp : MonoBehaviour, IXpProvider, IXpReceiver
 {
     [SerializeField]
     private XpSystemConfig _xpSystemConfig;

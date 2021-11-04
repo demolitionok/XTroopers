@@ -10,6 +10,21 @@ public class Stat
     [SerializeField]
     private float _value;
 
+    public Stat(float value, List<StatModifier> modifiers)
+    {
+        _value = value;
+        _modifiers = modifiers;
+    }
+    public Stat(float value)
+    {
+        _value = value;
+        _modifiers = new List<StatModifier>();
+    }
+    public Stat()
+    {
+        _modifiers = new List<StatModifier>();
+    }
+
     public float GetValue()
     {
         var result = _value;

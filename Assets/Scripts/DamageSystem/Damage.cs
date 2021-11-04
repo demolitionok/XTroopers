@@ -4,5 +4,12 @@ using UnityEngine;
 
 public struct Damage
 {
-    public float DmgValue;
+    public readonly float dmgValue;
+    public readonly LayerMask enemyLayer;
+
+    public Damage(float dmgValue, LayerMask enemyLayer)
+    {
+        this.dmgValue = dmgValue;
+        this.enemyLayer = enemyLayer;
+    }
 }
