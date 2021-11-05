@@ -9,7 +9,7 @@ public class TinyBazuka : AbstractWeapon
     {
         transform.LookAt(target);
         Rigidbody bullet = Instantiate(bulletPrefab, shootingPoint.position, Quaternion.identity);
-        bullet.AddForce(shootingPoint.forward * projectileSpeed, ForceMode.Impulse);
+        bullet.AddForce(shootingPoint.forward * weaponConfig.GetProjectileSpeed(), ForceMode.Impulse);
     }
 
 }

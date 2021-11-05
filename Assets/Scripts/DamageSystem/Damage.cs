@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct Damage
+public readonly struct Damage
 {
     public readonly float dmgValue;
     public readonly LayerMask enemyLayer;

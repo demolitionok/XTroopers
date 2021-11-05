@@ -16,6 +16,6 @@ public class SemiAutomaticRifle : AbstractWeapon
 
     private void SetProjectileSpeed(GameObject projectileObject)
     {
-        projectileObject.GetComponent<Rigidbody>().velocity = projectileObject.transform.forward * projectileSpeed;
+        projectileObject.GetComponent<Rigidbody>().velocity = projectileObject.transform.forward * weaponConfig.GetProjectileSpeed();
     }
 }

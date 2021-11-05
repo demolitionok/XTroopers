@@ -9,11 +9,9 @@ public abstract class AbstractWeapon : MonoBehaviour, IWeapon
     [SerializeField]
     protected GameObject projectilePrefab;
     [SerializeField]
-    private float shotCooldown;
+    protected WeaponConfig weaponConfig;
     [SerializeField]
     protected Transform shootingPoint;
-    [SerializeField]
-    protected float projectileSpeed;
     [SerializeField]
     protected ParticleSystem flash;
     
@@ -28,7 +26,7 @@ public abstract class AbstractWeapon : MonoBehaviour, IWeapon
     private void Awake()
     {
         damageProvider = GetComponent<DamageProvider>();
-        _currentShotCooldown = shotCooldown;
+        _currentShotCooldown = weaponConfig.GetShotCooldown();
     }
 
     protected abstract void SpawnBullet(Transform target);
@@ -37,7 +35,7 @@ public abstract class AbstractWeapon : MonoBehaviour, IWeapon
     {
         if (_currentShotCooldown >= 0) return;
 
-        _currentShotCooldown = shotCooldown;
+        _currentShotCooldown = weaponConfig.GetShotCooldown();
         flash.Play();
         SpawnBullet(target);
     }
