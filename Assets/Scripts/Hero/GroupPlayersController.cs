@@ -32,7 +32,8 @@ public class GroupPlayersController : MonoBehaviour
        GroupHeroMove();
     }
 
-    private void GroupHeroMove(){
+    private void GroupHeroMove()
+    {
         if (_joystick.Horizontal !=0 || _joystick.Vertical !=0)
         {
             var moveDirection = new Vector3(_joystick.Horizontal, 0, _joystick.Vertical);

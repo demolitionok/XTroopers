@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[CreateAssetMenu(menuName = "Configs/XpSystem")]
 public class XpSystemConfig : ScriptableObject
 {
     public int initialXpForNextLevel = 100;

@@ -13,35 +13,25 @@ public class PlayerXp : MonoBehaviour, IXpProvider, IXpReceiver
 {
     [SerializeField]
     private XpSystemConfig _xpSystemConfig;
+
+    private XpCalculator _calculator;
     
     private int _totalXp;
     
     private int _cachedTotalXp;
     private int _cachedLevel;
 
+    private bool loaded = false;
+    
     public UnityEvent<int> OnXpGain;
     public UnityEvent<int> OnLvlUp;
 
-    private int GetLevelXp()
-    {
-        var sum = Enumerable.Range(1, GetLevel() - _xpSystemConfig.startLevel).Aggregate(0,(a, b) => a + b);
-        return _totalXp - sum * _xpSystemConfig.xpForNextLvlGain;
-    }
-    private int GetXpForNextLevel() => _xpSystemConfig.initialXpForNextLevel + (GetLevel() - _xpSystemConfig.startLevel) * _xpSystemConfig.xpForNextLvlGain;
+    private int GetLevelXp() => _calculator.GetLevelXp(_totalXp, GetLevel());
+    private int GetXpForNextLevel() => _calculator.GetXpForNextLevel(GetLevel());
     private int GetLevel() => _cachedTotalXp == _totalXp ? _cachedLevel : RecalculateLevel();
     private int RecalculateLevel()
     {
-        var leftXp = _totalXp;
-        var newLevel = 0;
-        var curLevelXp = _xpSystemConfig.initialXpForNextLevel;
-
-        while (leftXp > curLevelXp)
-        {
-            leftXp -= curLevelXp;
-            curLevelXp += _xpSystemConfig.xpForNextLvlGain;
-            newLevel++;
-        }
-
+        var newLevel = _calculator.CalculateLevel(_totalXp);
         CacheLevel(newLevel);
 
         return newLevel;
@@ -66,8 +56,23 @@ public class PlayerXp : MonoBehaviour, IXpProvider, IXpReceiver
         
         OnXpGain.Invoke(xpAmount);
     }
-    
+
+    public void LoadXp(int totalXp)
+    {
+        if (loaded == false)
+        {
+            _totalXp = totalXp;
+        }
+        else
+        {
+            throw new Exception("Trying to load xp second time!");
+        }
+        
+        loaded = true;
+    }
+
     private void Awake()
     {
+        _calculator = new XpCalculator(_xpSystemConfig);
     }
 }
