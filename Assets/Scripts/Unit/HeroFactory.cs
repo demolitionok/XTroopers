@@ -1,22 +1,19 @@
-﻿
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HeroFactory
 {
     private HeroesPreset _preset;
-
     
-    //TODO: won't work correctly because [var prefab] is reference to prefab and after method invocation these components WILL CHANGE
-    private GameObject GetPrefabFromHero(Hero hero)
+    private GameObject InstantiateHero(Hero hero)
     {
         var prefab = _preset.GetPrefabByType(hero.type);
-        prefab.GetComponent<PlayerXp>().LoadXp(hero.totalXp);
+        var heroGameObject = Object.Instantiate(prefab);
+        heroGameObject.GetComponent<PlayerXp>().LoadXp(hero.totalXp);
         
-        prefab.GetComponent<PlayerStatContainer>().vitality = hero.statContainer.vitality;
-        prefab.GetComponent<PlayerStatContainer>().accuracy = hero.statContainer.accuracy;
-        prefab.GetComponent<PlayerStatContainer>().strength = hero.statContainer.strength;
+        heroGameObject.GetComponent<PlayerStatContainer>().vitality = hero.statContainer.vitality;
+        heroGameObject.GetComponent<PlayerStatContainer>().accuracy = hero.statContainer.accuracy;
+        heroGameObject.GetComponent<PlayerStatContainer>().strength = hero.statContainer.strength;
 
-        return prefab;
+        return heroGameObject;
     }
 }

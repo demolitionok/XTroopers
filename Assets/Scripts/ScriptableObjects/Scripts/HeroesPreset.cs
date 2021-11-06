@@ -23,7 +23,7 @@ public class HeroesPreset : ScriptableObject
         Debug.LogError($"Prefab of {type} was not found, returned null");
         return null;
     }
-    
+
     [Serializable]
     private struct HeroPrefab
     {

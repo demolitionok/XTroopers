@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d0b9bb381066840b7d9a5f18c85ad6, type: 3}
   m_Name: StandartSoldiers
   m_EditorClassIdentifier: 
-  heroPrefabs: []
+  heroPrefabs:
+  - type: 0
+    prefab: {fileID: 0}
