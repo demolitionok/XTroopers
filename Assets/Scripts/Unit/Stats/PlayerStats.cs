@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class PlayerStatContainer : MonoBehaviour
+public class PlayerStats : MonoBehaviour
 {
     public Stat vitality;
     public Stat accuracy;

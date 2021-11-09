@@ -3,7 +3,8 @@
 [Serializable]
 public class Hero
 {
-    public PlayerStatContainer statContainer;
+    public PlayerStats stats;
     public int totalXp;
+    public string name;
     public HeroType type;
 }

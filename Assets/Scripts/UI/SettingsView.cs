@@ -8,7 +8,7 @@ public class SettingsView : View
     [SerializeField]
     private Button backButton;
     
-    public override void Initialize()
+    public override void Init()
     {
         backButton.onClick.AddListener(ViewManager.ShowLast);
     }

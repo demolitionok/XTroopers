@@ -3,21 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerStatContainer))]
+[RequireComponent(typeof(PlayerStats))]
 public class PlayerDamageProvider : DamageProvider
 {
-    private PlayerStatContainer _playerStatContainer;
+    private PlayerStats _playerStats;
     private float _resultDmg;
 
     public override Damage GetDamage()
     {
-        _resultDmg = dmgValue + _playerStatContainer.strength.GetValue();
+        _resultDmg = dmgValue + _playerStats.strength.GetValue();
         return new Damage(_resultDmg, enemyLayer);
     }
 
     private void Awake()
     {
-        _playerStatContainer = GetComponent<PlayerStatContainer>();
-        _resultDmg = dmgValue + _playerStatContainer.strength.GetValue();
+        _playerStats = GetComponent<PlayerStats>();
+        _resultDmg = dmgValue + _playerStats.strength.GetValue();
     }
 }

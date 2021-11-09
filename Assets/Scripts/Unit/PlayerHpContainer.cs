@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerStatContainer))]
+[RequireComponent(typeof(PlayerStats))]
 public class PlayerHpContainer : HpContainer
 {
-    private PlayerStatContainer _playerStatContainer;
+    private PlayerStats _playerStats;
 
 
     protected override void Awake()
     {
-        _playerStatContainer = GetComponent<PlayerStatContainer>();
+        _playerStats = GetComponent<PlayerStats>();
     }
 
     protected void Start()
     {
-        SetHp(startHp + _playerStatContainer.vitality.GetValue());
+        SetHp(startHp + _playerStats.vitality.GetValue());
     }
 }

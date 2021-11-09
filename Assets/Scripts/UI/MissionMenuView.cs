@@ -11,7 +11,7 @@ public class MissionMenuView : View
     [SerializeField]
     private Button backButton;
     
-    public override void Initialize()
+    public override void Init()
     {
         startButton.onClick.AddListener(() =>
         {

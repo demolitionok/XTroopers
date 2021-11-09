@@ -11,7 +11,7 @@ public class HeroesPreset : ScriptableObject
     [SerializeField]
     private HeroPrefab[] heroPrefabs;
 
-    public GameObject GetPrefabByType(HeroType type)
+    public GameObject GetHeroPrefab(HeroType type)
     {
         foreach (var prefab in heroPrefabs)
         {

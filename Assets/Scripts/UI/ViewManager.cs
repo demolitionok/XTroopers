@@ -24,7 +24,7 @@ public class ViewManager : MonoBehaviour
     {
         foreach (var view in _views)
         {
-            view.Initialize();
+            view.Init();
             view.Hide();
         }
 

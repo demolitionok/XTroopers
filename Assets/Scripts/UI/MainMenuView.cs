@@ -12,7 +12,7 @@ public class MainMenuView : View
     [SerializeField]
     private Button exitButton;
     
-    public override void Initialize()
+    public override void Init()
     {
         startButton.onClick.AddListener(ViewManager.HideCurrentView);
         settingsButton.onClick.AddListener(() =>

@@ -8,7 +8,7 @@ public class HUDView : View
     [SerializeField]
     private Button menuButton;
     
-    public override void Initialize()
+    public override void Init()
     {
         menuButton.onClick.AddListener(() =>
         {
