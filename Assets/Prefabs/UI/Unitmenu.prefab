@@ -383,3 +383,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backButton: {fileID: 8472872837044595458}
+  heroPanelPrefab: {fileID: 8866339647327382881, guid: 4badd343af711144d9956e2c7c3c6e8e, type: 3}
